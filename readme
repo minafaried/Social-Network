@@ -12,4 +12,3 @@ Phase 3: Final SDS Document + Draft implementation
 5.	Logged user should be able to upgrade registration subscription to be a premium subscription. Premium subscription allows the user to do some extra functionalities. Logged user can upgrade the registration subscription by paying 99$ for a year subscription. Paying process should be allowed via credit card or PayPal.
 •	You should write a unit test-cases for both requirement 1 (Sign up requirement), requirement 3 (send friend request) and requirement 4 (accept friend request).
 •	You should use Git for team collaboration. Git history must show that the team is using it frequently and all members use it.
-i update >>>>>
