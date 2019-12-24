@@ -1,4 +1,4 @@
 
 public interface LeaveFromGroup {
-	public void leaveFromGroub(User mainuser, String pageid);
+	public void leave(User mainuser, Group group);
 }

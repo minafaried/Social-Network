@@ -1,4 +1,4 @@
 
 public interface GroupPost {
-	public void createGroupPost(User mainuser, String groupid, Post p);
+	public void createPost(User mainuser, Group group, Post p);
 }

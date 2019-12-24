@@ -1,4 +1,4 @@
 
 public interface LeaveFromPagre {
-	public void leaveFromPage(User mainuser, String pageid);
+	public void leave(User mainuser, Page page);
 }

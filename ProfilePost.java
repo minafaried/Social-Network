@@ -1,4 +1,4 @@
 
 public interface ProfilePost {
-	public void createProfilePost(User mainuser, Post p);
+	public void createPost(User mainuser, Post p);
 }

@@ -52,31 +52,31 @@ public class UserController implements LeaveFromPagre, LeaveFromGroup, PagePost,
 	}
 
 	@Override
-	public void createProfilePost(User mainuser, Post p) {
+	public void createPost(User mainuser, Post p) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void createGroupPost(User mainuser, String groupid, Post p) {
+	public void createPost(User mainuser, Group group, Post p) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void createPagePost(User mainuser, String pageid, Post p) {
+	public void createPost(User mainuser, Page page, Post p) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void leaveFromGroub(User mainuser, String pageid) {
+	public void leave(User mainuser, Page page) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void leaveFromPage(User mainuser, String pageid) {
+	public void leave(User mainuser, Group group) {
 		// TODO Auto-generated method stub
 
 	}

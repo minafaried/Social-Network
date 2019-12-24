@@ -1,4 +1,4 @@
 
 public interface PagePost {
-	public void createPagePost(User mainuser, String pageid, Post p);
+	public void createPost(User mainuser, Page page, Post p);
 }
