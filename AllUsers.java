@@ -23,16 +23,12 @@ public class AllUsers {
         
     }
     
-    public void setNUsers(ArrayList<User> nUser){
-        for (int i=0 ; i<nUser.size() ; i++){
-            allUSers.add(nUser.get(i));
-        }
+    public void setNUsers(User nUser){
+            this.allUSers.add(nUser);
     }
     
-    public void setPUsers(ArrayList<PremiumUser> pUser){
-        for (int i=0 ; i<pUser.size() ; i++){
-            allPremiumUser.add(pUser.get(i));
-        }
+    public void setPUsers(PremiumUser pUser){
+            this.allPremiumUser.add(pUser);
     }
     
     public ArrayList<User> getNUser(){
