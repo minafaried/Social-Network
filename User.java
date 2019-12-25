@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class User {
@@ -6,6 +7,9 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	private String gender ;
+	private String country;
+	private Date birthdate;
 	private ArrayList<Group> listOfGroup;
 	private ArrayList<Page> listOfPage;
 	private ArrayList<Post> listOfPost;
@@ -114,5 +118,29 @@ public class User {
 
 	public void setAddRequestList(User user) {
 		this.addRequestList.add(user);
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
 	}
 }
