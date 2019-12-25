@@ -1,23 +1,26 @@
 import java.util.ArrayList;
 
 public class databasehandler {
-	public ArrayList<AllUsers> getalluser() {
+	public ArrayList<AllUsers> getalluser() //mina
+	{
 		return null;
 
 	}
-	public void adduser(User user)
+	public User adduser(User user)//miada
+	{
+		return user;
+		
+	}
+	public PremiumUser addpremiumuser(PremiumUser user)//miada
+	{
+		return user;
+		
+	}
+	public void sendfriendrequest(String userid,User friendrequestid)//naglaa
 	{
 		
 	}
-	public void addpremiumuser(PremiumUser user)
-	{
-		
-	}
-	public void sendfriendrequest(String userid,User friendrequestid)
-	{
-		
-	}
-	public void acceptfriendreqest(String userid,User friendid)
+	public void acceptfriendreqest(String userid,User friendid)//mona
 	{
 		
 	}
