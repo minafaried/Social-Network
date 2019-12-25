@@ -12,7 +12,8 @@ import java.util.ArrayList;
  */
 public class GroupController {
 
-    public ArrayList<post> postlist(String groupid) {
+    public ArrayList<Post> postlist(String groupid) {
+		return null;
 
     }
 

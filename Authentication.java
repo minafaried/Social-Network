@@ -10,10 +10,12 @@
  */
 public class Authentication {
     public boolean logIn(String userName , String password){
+		return false;
         //return true;
     }
     
     public boolean logOut(){
+		return false;
         //return true;
     }
 }

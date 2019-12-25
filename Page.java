@@ -15,10 +15,10 @@ public class Page {
     private  String name;
     private String profilePicture;
     private String pageId;
-    private ArrayList<User> member = new ArrayList<user>(); 
-    private ArrayList<User> admins = new ArrayList<user>(); 
-    private ArrayList<Post> waitPost = new ArrayList<post>(); 
-    private ArrayList<Post> allPost = new ArrayList<post>(); 
+    private ArrayList<User> member = new ArrayList<User>(); 
+    private ArrayList<User> admins = new ArrayList<User>(); 
+    private ArrayList<Post> waitPost = new ArrayList<Post>(); 
+    private ArrayList<Post> allPost = new ArrayList<Post>(); 
     
     public void setName(String n){
         name=n;

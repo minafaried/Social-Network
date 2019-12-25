@@ -15,6 +15,7 @@ public class FriendSearch implements SearchFriend{
 
     @Override
     public ArrayList<User> search(String name) {
+		return null;
         
     }
     

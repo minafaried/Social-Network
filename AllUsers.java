@@ -12,8 +12,9 @@ import java.util.*;
  * @author DELL
  */
 public class AllUsers {
-    private ArrayList<User> allUSers new ArrayList<User>;
-    private ArrayList<PremiumUser> allPremiumUser = new ArrayList<PremiumUser>;
+	
+    private ArrayList<User> allUsers =new ArrayList<User>();
+    private ArrayList<PremiumUser> allPremiumUser = new ArrayList<PremiumUser>();
     
     public void addPUser(){
         
@@ -24,7 +25,7 @@ public class AllUsers {
     }
     
     public void setNUsers(User nUser){
-            this.allUSers.add(nUser);
+            this.allUsers.add(nUser);
     }
     
     public void setPUsers(PremiumUser pUser){
@@ -32,7 +33,7 @@ public class AllUsers {
     }
     
     public ArrayList<User> getNUser(){
-        return allUSers;
+        return allUsers;
     }
     
     public ArrayList<PremiumUser> getPUser(){

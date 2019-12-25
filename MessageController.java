@@ -9,7 +9,7 @@
  * @author ahmed
  */
 public class MessageController {
-    public void sendMessage(String groupMessageId ,content c){
+    public void sendMessage(String groupMessageId ,Content c){
         
     }
 }

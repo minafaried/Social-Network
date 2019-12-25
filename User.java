@@ -9,7 +9,7 @@ public class User {
 	private ArrayList<Group> listOfGroup;
 	private ArrayList<Page> listOfPage;
 	private ArrayList<Post> listOfPost;
-	private ArrayList<Messages> listOfChat;
+	private ArrayList<GroupMessage> listOfChat;
 	private ArrayList<User> friends;
 	private String profilePicture;
 	private ArrayList<User> addRequestList;
@@ -18,7 +18,7 @@ public class User {
 		addRequestList = new ArrayList<User>();
 		email = "";
 		friends = new ArrayList<User>();
-		listOfChat = new ArrayList<Messages>();
+		listOfChat = new ArrayList<GroupMessage>();
 		listOfGroup = new ArrayList<Group>();
 		listOfPage = new ArrayList<Page>();
 		listOfPost = new ArrayList<Post>();
@@ -84,11 +84,11 @@ public class User {
 		this.listOfPage.add(page);
 	}
 
-	public ArrayList<Messages> getListOfChat() {
+	public ArrayList<GroupMessage> getListOfChat() {
 		return listOfChat;
 	}
 
-	public void setListOfChat(Messages Chat) {
+	public void setListOfChat(GroupMessage Chat) {
 		this.listOfChat.add(Chat);
 	}
 

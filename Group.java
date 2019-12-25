@@ -13,15 +13,15 @@ import java.util.ArrayList;
  */
 public class Group {
 
-    String name;
-    String type;
-    String profilePicture ;
-    ArrayList<User> members;
-    ArrayList<Admin> admins;
-    String id;
-    ArrayList<post> waitPosts;
-    ArrayList<post> allPost;
-    boolean postOrNot;
+    private String name;
+    private String type;
+    private String profilePicture ;
+    private ArrayList<User> members;
+    private ArrayList<User> admins;
+    private String id;
+    private ArrayList<Post> waitPosts;
+    private ArrayList<Post> allPost;
+    private boolean postOrNot;
     
     
     

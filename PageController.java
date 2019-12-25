@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class PageController {
     public ArrayList<String> postlist(){
+		return null;
          
     }
     public void addUser(String userId){
@@ -28,9 +29,11 @@ public class PageController {
         
     }
      public boolean searchForMember(String userId){
+		return false;
         
     }
      public int getNumOfAdmins(){
+		return 0;
         
     }
     public void deletePage(String pageId){

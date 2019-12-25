@@ -62,27 +62,27 @@ public class UserController {
 
 	public void createPagePost(User mainuser, Group group, Post p) {
 		this.createpost=new PagePost();
-		createpost.createPost(mainuser,group.id , p);
+		createpost.createPost(mainuser,group.getId() , p);
 
 	}
 
 	
 	public void createGroupPost(User mainuser, Page page, Post p) {
 		this.createpost=new GroupPost();
-		createpost.createPost(mainuser,page.id , p);
+		createpost.createPost(mainuser,page.getPageId() , p);
 
 	}
 
 
 	public void leaveFromGroup(User mainuser, Group group) {
 		this.leave=new LeaveFromGroup();
-		leave.leave(mainuser, group.id);
+		leave.leave(mainuser, group.getId());
 
 	}
 
 	public void leaveFromPage(User mainuser, Page page) {
 		this.leave=new LeaveFromPage();
-		leave.leave(mainuser, page.id);
+		leave.leave(mainuser, page.getPageId());
 
 	}
 }

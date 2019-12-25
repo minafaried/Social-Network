@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class GroupSearch implements Search{
     @Override
     public ArrayList<Group> search(String name){
+		return null;
     
 }
 }

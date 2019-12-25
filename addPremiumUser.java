@@ -10,6 +10,7 @@
  */
 public class addPremiumUser implements SignUp{
     public boolean signUp(String userName , String email , String password , int phoneNmber){
+		return false;
         //return true;
     }
 }

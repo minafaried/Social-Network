@@ -15,6 +15,7 @@ public class HashTagSearch implements SearchHashTag{
 
     @Override
     public ArrayList<HashTag> search(String name) {
+		return null;
        
     }
     
