@@ -146,6 +146,20 @@ public class PremiumUser {
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
+	public void setPaypal(String payPal) {
+		this.payPal = payPal;
+	}
+        public void setcredit_Card(String credit_card) {
+		this.creditCard = credit_card;
+	}
+	public String getPaypal()
+        {
+            return payPal;
+        }
+        public String getcreditCard()
+        {
+            return creditCard;
+        }
 	public void display() {
 		System.out.print("id: "+this.userId+" \nname:"+this.name+"\nfriendsid: ");
 		for (int i = 0; i < friendsids.size(); i++) {
