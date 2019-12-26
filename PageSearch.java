@@ -11,9 +11,9 @@ import java.util.ArrayList;
  *
  * @author Nagla Essam
  */
-public class PageSearch implements SearchPage{
+public class PageSearch {
 
-    @Override
+  
     public ArrayList<Page> search(String name) {
 		return null;
         
