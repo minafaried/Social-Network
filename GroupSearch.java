@@ -11,10 +11,10 @@ import java.util.ArrayList;
  *
  * @author Nagla Essam
  */
-public class GroupSearch {
-  
-    public ArrayList<Group> search(String name){
-		return null;
-    
-}
+public class GroupSearch  implements Search{
+
+    @Override
+    public ArrayList<String> search(String name) {
+      return null;
+    }
 }
