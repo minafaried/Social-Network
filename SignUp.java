@@ -9,5 +9,5 @@
  * @author DELL
  */
 public interface SignUp {
-    public boolean signUp(String userName , String email , String password , int phoneNmber);
+    public String signUp(String userName, String email, String password, String gender, String country, Date birthdate);
 }
