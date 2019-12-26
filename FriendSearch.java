@@ -11,12 +11,11 @@ import java.util.ArrayList;
  *
  * @author Nagla Essam
  */
-public class FriendSearch {
-
+public class FriendSearchimplements Search{
    
-    public ArrayList<User> search(String name) {
-		return null;
-        
+    @Override
+    public ArrayList<String> search(String name) {
+        return null;
     }
     
 }
