@@ -9,6 +9,20 @@
  * @author DELL
  */
 public class Link implements Notification{
+    private static Link object;
+    
+    private Link(){
+        
+    }
+    
+    public Link getObject(){
+        if (object == null){
+            object = new Link();
+        }
+        
+        return object;
+    }
+    
     public void sendNotification(String userId){
         
     }
