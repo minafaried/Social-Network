@@ -15,14 +15,14 @@ public class PremiumUser {
 	private ArrayList<Page> listOfPage;
 	private ArrayList<Post> listOfPost;
 	private ArrayList<GroupMessage> listOfChat;
-	private ArrayList<User> friends;
+	private ArrayList<String> friendsids;
 	private String profilePicture;
-	private ArrayList<User> addRequestList;
+	private ArrayList<String> addRequestIdList;
 
 	public PremiumUser() {
-		addRequestList = new ArrayList<User>();
+		addRequestIdList = new ArrayList<String>();
 		email = "";
-		friends = new ArrayList<User>();
+		friendsids = new ArrayList<String>();
 		listOfChat = new ArrayList<GroupMessage>();
 		listOfGroup = new ArrayList<Group>();
 		listOfPage = new ArrayList<Page>();
@@ -97,12 +97,12 @@ public class PremiumUser {
 		this.listOfChat.add(Chat);
 	}
 
-	public ArrayList<User> getFriends() {
-		return friends;
+	public ArrayList<String> getFriends() {
+		return friendsids;
 	}
 
-	public void setFriends(User friend) {
-		this.friends.add(friend);
+	public void setFriends(String friendid) {
+		this.friendsids.add(friendid);
 	}
 
 	public String getProfilePicture() {
@@ -113,12 +113,12 @@ public class PremiumUser {
 		this.profilePicture = profilePicture;
 	}
 
-	public ArrayList<User> getAddRequestList() {
-		return addRequestList;
+	public ArrayList<String> getAddRequestList() {
+		return addRequestIdList;
 	}
 
-	public void setAddRequestList(User user) {
-		this.addRequestList.add(user);
+	public void setAddRequestList(String userid) {
+		this.addRequestIdList.add(userid);
 	}
 
 	public String getGender() {
@@ -144,5 +144,16 @@ public class PremiumUser {
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
-
+	public void display() {
+		System.out.print("id: "+this.userId+" \nname:"+this.name+"\nfriendsid: ");
+		for (int i = 0; i < friendsids.size(); i++) {
+			System.out.print(friendsids.get(i)+" ");
+		}
+		System.out.print("\naddRequestListids: ");
+	
+		for (int i = 0; i < addRequestIdList.size(); i++) {
+			System.out.print(addRequestIdList.get(i)+" ");
+		}
+		System.out.println();
+	}
 }
