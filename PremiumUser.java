@@ -11,6 +11,8 @@ public class PremiumUser {
 	private String gender ;
 	private String country;
 	private Date birthdate;
+	private String payPal;
+	private String creditCard;
 	private ArrayList<Group> listOfGroup;
 	private ArrayList<Page> listOfPage;
 	private ArrayList<Post> listOfPost;
