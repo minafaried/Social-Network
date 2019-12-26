@@ -201,8 +201,8 @@ public class databasehandler {
             try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
                 Statement stmt1 = con.createStatement(); Statement stmt2 = con.createStatement();) {
 
-            String SQL1 = "delete from addrequestlist where UserId = '" + userid + "' ;";
-            String SQL2 = "insert into FRINDES values ('" + userid + "' , '" + friendid + "') ;";
+            String SQL1 = "delete from addrequestlist where UserId = '" + Integer.parseInt(userid) + "' ;";
+            String SQL2 = "insert into FRINDES values ('" + Integer.parseInt(userid) + "' , '" + Integer.parseInt(friendid) + "') ;";
 
             int x = stmt1.executeUpdate(SQL1);
             int y = stmt2.executeUpdate(SQL2);
