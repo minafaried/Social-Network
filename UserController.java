@@ -6,8 +6,13 @@ public class UserController {
 	private CreatePost createpost;
 	
 	public void sendFriendRequest(User mainuser, User user) {
+		databasehandler d=new databasehandler();
+		d.sendfriendrequest(user.getUserId(), mainuser.getUserId());
 	}
-
+	public void acceptFriend(User mainuser, User friend) {
+		databasehandler d=new databasehandler();
+		d.acceptfriendrequest(mainuser.getUserId(), friend.getUserId());
+	}
 	public void sendGroupRequest(User mainuser, Group group) {
 	}
 
@@ -27,9 +32,7 @@ public class UserController {
 
 	}
 
-	public void acceptFriend(User mainuser, User friend) {
 
-	}
 
 	public void rejectFriend(User mainuser, User notfriend) {
 	}

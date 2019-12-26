@@ -2,6 +2,7 @@
 import java.util.*;
 
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,6 +24,28 @@ public class AllUsers {
     	for (int i = 0; i < allPremiumUser.size(); i++) {
 			allPremiumUser.get(i).display();
 		}
+    }
+    public User getuserbyid(String userid)
+    {
+    	   
+        for (int i=0 ; i<allUsers.size() ; i++){
+            if (allUsers.get(i).getUserId().equals(userid)){
+            	return allUsers.get(i);
+            }
+        }
+        
+		return null;
+    }
+    public PremiumUser getpremiumuserbyid(String userid)
+    {
+    	   
+        for (int i=0 ; i<allPremiumUser.size() ; i++){
+            if (allPremiumUser.get(i).getUserId().equals(userid)){
+            	return allPremiumUser.get(i);
+            }
+        }
+        
+		return null;
     }
     public void addPUser(){
         

@@ -25,3 +25,14 @@ CREATE TABLE [addrequestlist] (
   [friendrequestid] int REFERENCES Users(UserId),
 );
 
+insert into [Users](name,password,email,gender,country,birthdate,is_Premium_Users)
+         values('ramy','123','mina@gmail.com','m','giza','1999-4-16' ,0);
+
+select *from users ;
+Select*from FRINDES;
+select*from addrequestlist;
+
+insert into FRINDES (UserId,friendid)values(1,3);
+insert into FRINDES (UserId,friendid)values(3,1);
+
+insert into addrequestlist(UserId,friendrequestid)values(2,1);

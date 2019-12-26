@@ -12,6 +12,6 @@ import java.util.ArrayList;
  * @author Nagla Essam
  */
 public interface Search {
-    public ArrayList<String> search(String name);
+    public ArrayList<String> search(String name,AllUsers a);
     
 }

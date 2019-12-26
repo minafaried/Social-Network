@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class PageSearch implements Search{
 
     @Override
-    public ArrayList<String> search(String name) {
+    public ArrayList<String> search(String name,AllUsers alluser) {
        return null;
     }
     

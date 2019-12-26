@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,37 +11,28 @@
  * @author DELL
  */
 public class Authentication {
-    public boolean logIn(String userName , String password) {
-        databasehandler db = new databasehandler();
-        AllUsers all = db.getalluser();
+    public String logIn(String userName , String password,AllUsers allusers) {
 
-        ArrayList<User> nUsers = all.getNUser();
-        ArrayList<PremiumUser> pUsers = all.getPUser();
+    	String id="";
 
-        boolean normal = false;
-        boolean premium = false;
-        for (int i = 0; i < nUsers.size(); i++) {
-            if (nUsers.get(i).getName().equals(userName) && nUsers.get(i).getPassword().equals(password)) {
-                normal = true;
+        for (int i = 0; i < allusers.getNUser().size(); i++) {
+            if ( allusers.getNUser().get(i).getName().equals(userName) && allusers.getNUser().get(i).getPassword().equals(password)) {
+                id =allusers.getNUser().get(i).getUserId() ;
+                
                 //System.out.println("Login Successfully...");
             }
         }
 
-        if (normal == false) {
-            for (int i = 0; i < pUsers.size(); i++) {
-                if (pUsers.get(i).getName().equals(userName) && pUsers.get(i).getPassword().equals(password)) {
-                    premium = true;
+        if (id.equals("")) {
+            for (int i = 0; i < allusers.getPUser().size(); i++) {
+                if ( allusers.getPUser().get(i).getName().equals(userName) &&  allusers.getPUser().get(i).getPassword().equals(password)) {
+                	 id=allusers.getPUser().get(i).getUserId() ;
                     //System.out.println("Login Successfully...");
                 }
             }
         }
-
-        if (normal = false && premium == false) {
-            //System.out.println("Login Failed...");
-            return false;
-        }
         
-        return true;
+        return id;
     }
     
     public boolean logOut(){

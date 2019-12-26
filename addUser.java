@@ -1,3 +1,5 @@
+import java.sql.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,10 +21,8 @@ public class addUser implements SignUp{
         user.setBirthdate(birthdate);
        
         databasehandler db = new databasehandler();
-        user = db.adduser(user);
-        
-	String newId = user.getUserId();
-        
+        user = db.adduser(user);    
+	    String newId = user.getUserId();
         return newId;
     }
 }
