@@ -1,15 +1,16 @@
 create database SN_db
+
 CREATE TABLE [Users] (
   [UserId] int IDENTITY(1,1),
-  [name] varchar not null,
-  [password] varchar not null,
-  [email] varchar not null,
-  [gender] varchar not null,
-  [country] varchar not null,
+  [name] varchar(20) not null,
+  [password] varchar(50) not null,
+  [email] varchar(50) not null,
+  [gender] varchar(10) not null,
+  [country] varchar(30) not null,
   [birthdate] date not null, 
   [is_Premium_Users] int not null,/*0 not a Premium_Users 1 is a  Premium_Users */
-  [PayPal] varchar ,
-  [credit_card] varchar , 
+  [PayPal] varchar(20) ,
+  [credit_card] varchar(20) , 
   PRIMARY KEY ([UserId])
 );
 
@@ -24,5 +25,3 @@ CREATE TABLE [addrequestlist] (
   [friendrequestid] int REFERENCES Users(UserId),
 );
 
-
-select *from users;
