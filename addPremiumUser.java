@@ -26,11 +26,11 @@ public class addPremiumUser implements SignUp {
 			Scanner input = new Scanner(System.in);
 			credit = input.nextLine();
 			pUser.setcredit_Card(credit);
-			pUser.setPaypal("");
+			pUser.setPaypal(null);
 		} else {
 			Scanner input = new Scanner(System.in);
 			paypal = input.nextLine();
-			pUser.setcredit_Card("");
+			pUser.setcredit_Card(null);
 			pUser.setPaypal(paypal);
 		}
 		pUser.setName(userName);
