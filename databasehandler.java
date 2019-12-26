@@ -162,10 +162,36 @@ public class databasehandler {
 		return user;
 		
 	}
-	public void sendfriendrequest(String userid,User friendrequestid)//naglaa
+	/* we check if friend request Id is valid then we add userId and friend request Id into table addrequestlist by this i
+        send a request to a friend */
+	public void sendfriendrequest(String userid,String friendrequestid)//naglaa
 	{
+            String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";	
+		try (Connection con = DriverManager.getConnection(connectionUrl, "root", "root");
+				Statement stmt1 = con.createStatement();Statement stmt2 = con.createStatement();){
+                    String SQL = "SELECT  [UserId] FROM users;";
+                    ResultSet usersIDS = stmt1.executeQuery(SQL);
+                    while(usersIDS.next())
+                    {
+                        if(friendrequestid.equals(usersIDS.getString("UserId")))
+                        {
+                             String SQL1 = "insert into addrequestlist values ('" + userid + "' , '" + friendrequestid + "') ;";
+                             ResultSet friendIds = stmt2.executeQuery(SQL1);
+                             break;
+                        }
+                        
+                    }
+                    
+                                
+                        
+                 con.close();
+                }
+		catch (SQLException e) {
+			System.err.println(e);
+		}       
 		
 	}
+	
 	
 	/*when the user accept friend request, we must delete the user that sent friend
           request from (add request list) and add him to (friend list) of the user. */
