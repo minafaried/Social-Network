@@ -11,12 +11,11 @@ import java.util.ArrayList;
  *
  * @author Nagla Essam
  */
-public class PageSearch {
+public class PageSearch implements Search{
 
-  
-    public ArrayList<Page> search(String name) {
-		return null;
-        
+    @Override
+    public ArrayList<String> search(String name) {
+       return null;
     }
     
     
