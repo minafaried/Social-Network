@@ -11,11 +11,11 @@ import java.util.ArrayList;
  *
  * @author Nagla Essam
  */
-public class HashTagSearch {
+public class HashTagSearchimplements Search{
 
-    public ArrayList<HashTag> search(String name) {
-		return null;
-       
+    @Override
+    public ArrayList<String> search(String name) {
+        return null;
     }
     
 }
