@@ -11,8 +11,8 @@ import java.util.ArrayList;
  *
  * @author Nagla Essam
  */
-public class GroupSearch implements Search{
-    @Override
+public class GroupSearch {
+  
     public ArrayList<Group> search(String name){
 		return null;
     
