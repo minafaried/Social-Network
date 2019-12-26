@@ -154,12 +154,92 @@ public class databasehandler {
 	}
 	public User adduser(User user)//miada
 	{
-		return user;
+        String name = user.getName();
+        String password = user.getPassword();
+        String email = user.getEmail();
+        String gender = user.getGender();
+        String country = user.getCountry();
+        Date birthdate = user.getBirthdate();
+        int is_premium = 0;
+        //String PayPal = "";
+        //String creditCard = "";
+
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement(); Statement stmt2 = con.createStatement();) {
+
+            String SQL1 = "insert into Users(name, password, email, gender, country, birthdate, is_Premium_Users)"
+            + "values ('" + name + "' , '" + password + "' , '" + email + "' , '" + gender + "' , '" + country + "' , '" + birthdate + "' , '" + is_premium + "') ;";
+
+            int x = stmt1.executeUpdate(SQL1);
+
+            if (x > 0) {
+                System.out.println("User successfully added into System...");
+            }
+            else {
+                System.out.println("ERROR OCCURED WHEN INSERTING!!");
+            }
+            
+            String SQL2 = "select UserId from Users where name = '" + name + "' and password = '" + password + "' and email = '" + email + "'"
+                    + " and gender = '" + gender + "' and country = '" + country + "' and birthdate = '" + birthdate + "' and is_Premium_Users = '" + is_premium + "';";
+
+            ResultSet newID = stmt2.executeQuery(SQL2);
+            user.setUserId(newID.getString("UserId"));
+            
+            con.close();
+        }
+
+        // Handle any errors that may have occurred.
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+        return user;
 		
 	}
 	public PremiumUser addpremiumuser(PremiumUser user)//miada
 	{
-		return user;
+		 String name = user.getName();
+        String password = user.getPassword();
+        String email = user.getEmail();
+        String gender = user.getGender();
+        String country = user.getCountry();
+        Date birthdate = user.getBirthdate();
+        int is_premium = 1;
+        //String PayPal = "";
+        //String creditCard = "";
+
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement(); Statement stmt2 = con.createStatement();) {
+
+            String SQL1 = "insert into PremiumUser(name, password, email, gender, country, birthdate, is_Premium_Users)"
+            + "values ('" + name + "' , '" + password + "' , '" + email + "' , '" + gender + "' , '" + country + "' , '" + birthdate + "' , '" + is_premium + "') ;";
+
+            int x = stmt1.executeUpdate(SQL1);
+
+            if (x > 0) {
+                System.out.println("User successfully added into System...");
+            }
+            else {
+                System.out.println("ERROR OCCURED WHEN INSERTING!!");
+            }
+            
+            String SQL2 = "select UserId from Users where name = '" + name + "' and password = '" + password + "' and email = '" + email + "'"
+                    + " and gender = '" + gender + "' and country = '" + country + "' and birthdate = '" + birthdate + "' and is_Premium_Users = '" + is_premium + "';";
+
+            ResultSet newID = stmt2.executeQuery(SQL2);
+            user.setUserId(newID.getString("UserId"));
+            
+            con.close();
+        }
+
+        // Handle any errors that may have occurred.
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+        return user;
+
+    }
 		
 	}
 	/* we check if friend request Id is valid then we add userId and friend request Id into table addrequestlist by this i
