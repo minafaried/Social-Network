@@ -166,8 +166,41 @@ public class databasehandler {
 	{
 		
 	}
-	public void acceptfriendreqest(String userid,User friendid)//mona
-	{
-		
-	}
+	
+	/*when the user accept friend request, we must delete the user that sent friend
+          request from (add request list) and add him to (friend list) of the user. */
+        public void acceptfriendrequest(String userid , String friendid)//mona
+        {
+            String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+            try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement(); Statement stmt2 = con.createStatement();) {
+
+            String SQL1 = "delete from addrequestlist where UserId = '" + userid + "' ;";
+            String SQL2 = "insert into FRINDES values ('" + userid + "' , '" + friendid + "') ;";
+
+            int x = stmt1.executeUpdate(SQL1);
+            int y = stmt2.executeUpdate(SQL2);
+
+            if (x > 0) {
+                System.out.println("User successfully deleted from request list...");
+            }
+            else {
+                System.out.println("ERROR OCCURED WHEN DELETING!!");
+            }
+            
+            if (y > 0) {
+                System.out.println("User successfully added to friend list...");
+            }
+            else {
+                System.out.println("ERROR OCCURED WHEN INSERTING!!");
+            }
+            
+            con.close();
+            }
+
+            // Handle any errors that may have occurred.
+            catch (SQLException e) {
+                System.err.println(e);
+           }
+       }
 }
