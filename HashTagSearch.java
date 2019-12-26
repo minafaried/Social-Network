@@ -11,9 +11,8 @@ import java.util.ArrayList;
  *
  * @author Nagla Essam
  */
-public class HashTagSearch implements SearchHashTag{
+public class HashTagSearch {
 
-    @Override
     public ArrayList<HashTag> search(String name) {
 		return null;
        
