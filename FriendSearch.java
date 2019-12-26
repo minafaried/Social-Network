@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Nagla Essam
  */
-public class FriendSearchimplements Search{
+public class FriendSearch iimplements Search{
    
     @Override
     public ArrayList<String> search(String name) {
