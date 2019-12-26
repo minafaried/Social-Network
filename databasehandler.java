@@ -166,30 +166,18 @@ public class databasehandler {
         send a request to a friend */
 	public void sendfriendrequest(String userid,String friendrequestid)//naglaa
 	{
-            String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";	
+             String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";	
 		try (Connection con = DriverManager.getConnection(connectionUrl, "root", "root");
-				Statement stmt1 = con.createStatement();Statement stmt2 = con.createStatement();){
-                    String SQL = "SELECT  [UserId] FROM users;";
-                    ResultSet usersIDS = stmt1.executeQuery(SQL);
-                    while(usersIDS.next())
-                    {
-                        if(friendrequestid.equals(usersIDS.getString("UserId")))
-                        {
-                             String SQL1 = "insert into addrequestlist values ('" + userid + "' , '" + friendrequestid + "') ;";
-                             ResultSet friendIds = stmt2.executeQuery(SQL1);
-                             break;
-                        }
-                        
-                    }
+				Statement stmt1 = con.createStatement();){
                     
-                                
-                        
+                             String SQL = "insert into addrequestlist values ('" + Integer.parseInt(userid) + "' , '" + Integer.parseInt(friendrequestid) + "') ;";
+                             ResultSet friendIds = stmt1.executeQuery(SQL);
                  con.close();
                 }
 		catch (SQLException e) {
 			System.err.println(e);
 		}       
-		
+		 	
 	}
 	
 	
