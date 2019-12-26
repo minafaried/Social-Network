@@ -11,6 +11,12 @@ import java.util.ArrayList;
  * @author ahmed
  */
 public class GroupController {
+    private static final GroupController INSTANCE = new GroupController();
+    private GroupController(){}
+
+    public static GroupController getInstance() {
+        return INSTANCE;
+    }
 
     public ArrayList<Post> postlist(String groupid) {
 		return null;
