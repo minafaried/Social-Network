@@ -9,6 +9,19 @@
  * @author DELL
  */
 public class Request implements Notification{
+    private static Request object;
+    
+    private Request(){
+        
+    }
+    
+    public Request getObject(){
+        if (object == null){
+            object = new Request();
+        }
+        
+        return object;
+    }
     public void sendNotification(String userId){
         
     }
