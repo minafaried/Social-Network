@@ -29,7 +29,8 @@ public class databasehandler {
 		return -1;
 	}
 
-	public AllUsers getalluser() {
+	public AllUsers getalluser() //mina
+	{
 		AllUsers allusers=new AllUsers();
 		
 		ArrayList<Ids>friends=new ArrayList<Ids>();
@@ -151,21 +152,21 @@ public class databasehandler {
 		return allusers;
 
 	}
-	public User adduser(User user)
+	public User adduser(User user)//miada
 	{
 		return user;
 		
 	}
-	public PremiumUser addpremiumuser(PremiumUser user)
+	public PremiumUser addpremiumuser(PremiumUser user)//miada
 	{
 		return user;
 		
 	}
-	public void sendfriendrequest(String userid,User friendrequestid)
+	public void sendfriendrequest(String userid,User friendrequestid)//naglaa
 	{
 		
 	}
-	public void acceptfriendreqest(String userid,User friendid)
+	public void acceptfriendreqest(String userid,User friendid)//mona
 	{
 		
 	}
