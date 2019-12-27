@@ -145,164 +145,240 @@ public class databasehandler {
 	}
 
 	public User adduser(User user)// miada
-	{
-		String name = user.getName();
-		String password = user.getPassword();
-		String email = user.getEmail();
-		String gender = user.getGender();
-		String country = user.getCountry();
-		Date birthdate = user.getBirthdate();
-		int is_premium = 0;
-		// String PayPal = "";
-		// String creditCard = "";
-		//System.out.println(birthdate.getYear()+" "+birthdate.getMonth()+" "+birthdate.getDay());
-		String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
-		try (Connection con = DriverManager.getConnection(connectionUrl, "root", "root");
-				Statement stmt1 = con.createStatement();
-				Statement stmt2 = con.createStatement();) {
+    {
+        String name = user.getName();
+        String password = user.getPassword();
+        String email = user.getEmail();
+        String gender = user.getGender();
+        String country = user.getCountry();
+        Date birthdate = user.getBirthdate();
+        int is_premium = 0;
+        // String PayPal = "";
+        // String creditCard = "";
+        //System.out.println(birthdate.getYear()+" "+birthdate.getMonth()+" "+birthdate.getDay());
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement(); Statement stmt2 = con.createStatement(); Statement stmt3 = con.createStatement();) {
 
-			String SQL1 = "insert into Users(name, password, email, gender, country, birthdate, is_Premium_Users)"
-					+ "values ('" + name + "' , '" + password + "' , '" + email + "' , '" + gender + "' , '" + country
-					+ "' , '" + birthdate + "' , '" + is_premium + "') ;";
+            String SQL = "Select email from Users";
+            ResultSet emails = stmt1.executeQuery(SQL);
+            while (emails.next()) {
+                if (emails.getString("email").equals(email)) {
+                    System.out.println("The Email already exists!!");
+                    return null;
+                }
+            }
 
-			int x = stmt1.executeUpdate(SQL1);
+            String SQL1 = "insert into Users(name, password, email, gender, country, birthdate, is_Premium_Users)"
+                    + "values ('" + name + "' , '" + password + "' , '" + email + "' , '" + gender + "' , '" + country
+                    + "' , '" + birthdate.getYear() + "-" + birthdate.getMonth() + "-" + birthdate.getDay() + "' , '" + is_premium + "') ;";
 
-			if (x > 0) {
-				System.out.println("User successfully added into System...");
-			} else {
-				System.out.println("ERROR OCCURED WHEN INSERTING!!");
-			}
+            stmt2.executeUpdate(SQL1);
 
-			String SQL2 = "select * from Users where name = '" + name + "' and password = '" + password
-					+ "' and email = '" + email + "'" + " and gender = '" + gender + "' and country = '" + country
-					+"' and is_Premium_Users = '" + is_premium + "';";
+            String SQL2 = "select * from Users where name = '" + name + "' and password = '" + password
+                    + "' and email = '" + email + "'" + " and gender = '" + gender + "' and country = '" + country
+                    + "' and is_Premium_Users = '" + is_premium + "';";
 
-			ResultSet newID = stmt2.executeQuery(SQL2);
-			newID.next();
-			user.setUserId(newID.getString("UserId"));
-			System.out.println(newID.getDate("birthdate"));
+            ResultSet newID = stmt3.executeQuery(SQL2);
+            newID.next();
+            user.setUserId(newID.getString("UserId"));
+            //System.out.println(newID.getDate("birthdate"));
 
-			con.close();
-		}
+            con.close();
+        }
 
-		// Handle any errors that may have occurred.
-		catch (SQLException e) {
-			System.err.println(e);
-		}
-		return user;
+        // Handle any errors that may have occurred.
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+        return user;
 
-	}
+    }
 
-	public PremiumUser addpremiumuser(PremiumUser user)// miada
-	{
-		String name = user.getName();
-		String password = user.getPassword();
-		String email = user.getEmail();
-		String gender = user.getGender();
-		String country = user.getCountry();
-		Date birthdate = user.getBirthdate();
-		int is_premium = 1;
-		// String PayPal = "";
-		// String creditCard = "";
+    public PremiumUser addpremiumuser(PremiumUser user)// miada
+    {
+        String name = user.getName();
+        String password = user.getPassword();
+        String email = user.getEmail();
+        String gender = user.getGender();
+        String country = user.getCountry();
+        Date birthdate = user.getBirthdate();
+        int is_premium = 1;
+        String payPal = user.getPaypal();
+        String creditCard = user.getcreditCard();
 
-		String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
-		try (Connection con = DriverManager.getConnection(connectionUrl, "root", "root");
-				Statement stmt1 = con.createStatement();
-				Statement stmt2 = con.createStatement();) {
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement(); Statement stmt2 = con.createStatement(); Statement stmt3 = con.createStatement();) {
 
-			String SQL1 = "insert into [Users](name,password,email,gender,country,birthdate,is_Premium_Users,PayPal,credit_card)"
-					+ "values ('" + name + "' , '" + password + "' , '" + email + "' , '" + gender + "' , '" + country
-					+ "' , '" + birthdate + "' , '" + is_premium + "', '" + user.getPaypal() + "' , '" + user.getcreditCard() + "') ;";
+            String SQL = "Select email from Users";
+            ResultSet emails = stmt1.executeQuery(SQL);
+            while (emails.next()) {
+                if (emails.getString("email").equals(email)) {
+                    System.out.println("The Email already exists!!");
+                    return null;
+                }
+            }
 
-			int x = stmt1.executeUpdate(SQL1);
+            String SQL1 = "insert into [Users](name,password,email,gender,country,birthdate,is_Premium_Users,PayPal,credit_card)"
+                    + "values ('" + name + "' , '" + password + "' , '" + email + "' , '" + gender + "' , '" + country
+                    + "' , '" + birthdate.getYear() + "-" + birthdate.getMonth() + "-" + birthdate.getDay() + "' , '" + is_premium + "', '" + payPal + "' , '" + creditCard + "') ;";
 
-			if (x > 0) {
-				System.out.println("User successfully added into System...");
-			} else {
-				System.out.println("ERROR OCCURED WHEN INSERTING!!");
-			}
+            int x = stmt2.executeUpdate(SQL1);
 
-			String SQL2 = "select UserId from Users where name = '" + name + "' and password = '" + password
-					+ "' and email = '" + email + "'" + " and gender = '" + gender + "' and country = '" + country
-					+ "' and is_Premium_Users = '" + is_premium + "';";
+            if (x > 0) {
+                System.out.println("User successfully added into System...");
+            }
+            else {
+                System.out.println("ERROR OCCURED WHEN INSERTING!!");
+            }
 
-			ResultSet newID = stmt2.executeQuery(SQL2);
-			newID.next();
-			user.setUserId(newID.getString("UserId"));
+            String SQL2 = "select UserId from Users where name = '" + name + "' and password = '" + password
+                    + "' and email = '" + email + "'" + " and gender = '" + gender + "' and country = '" + country
+                    + "' and is_Premium_Users = '" + is_premium + "';";
 
-			con.close();
-		}
+            ResultSet newID = stmt3.executeQuery(SQL2);
+            newID.next();
+            user.setUserId(newID.getString("UserId"));
 
-		// Handle any errors that may have occurred.
-		catch (SQLException e) {
-			System.err.println(e);
-		}
-		return user;
+            con.close();
+        }
 
-	}
+        // Handle any errors that may have occurred.
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+        return user;
 
-	/*
-	 * we check if friend request Id is valid then we add userId and friend request
-	 * Id into table addrequestlist by this i send a request to a friend
-	 */
-	public void sendfriendrequest(String userid, String friendrequestid)// naglaa
-	{
-		String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
-		try (Connection con = DriverManager.getConnection(connectionUrl, "root", "root");
-				Statement stmt1 = con.createStatement();) {
+    }
 
-			String SQL = "insert into addrequestlist values ('" + Integer.parseInt(userid) + "' , '"
-					+ Integer.parseInt(friendrequestid) + "') ;";
-			stmt1.executeUpdate(SQL);
-			con.close();
-		} catch (SQLException e) {
-			System.err.println(e);
-		}
+    /*
+     * we check if friend request Id is valid then we add userId and friend request
+     * Id into table addrequestlist by this i send a request to a friend
+     */
+    public void sendfriendrequest(String userid , String friendrequestid)// naglaa
+    {
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement();) {
 
-	}
+            String SQL = "insert into addrequestlist values ('" + Integer.parseInt(userid) + "' , '"
+                    + Integer.parseInt(friendrequestid) + "') ;";
+            stmt1.executeUpdate(SQL);
+            con.close();
 
-	/*
-	 * when the user accept friend request, we must delete the user that sent friend
-	 * request from (add request list) and add him to (friend list) of the user.
-	 */
-	public void acceptfriendrequest(String userid, String friendid)// mona
-	{
-		
-		String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
-		try (Connection con = DriverManager.getConnection(connectionUrl, "root", "root");
-				Statement stmt1 = con.createStatement();
-				Statement stmt2 = con.createStatement();) {
+            String message = "Firend Request from " + friendrequestid;
+            sendingNotification(userid , message);
+        }
+        catch (SQLException e) {
+            System.err.println(e);
+        }
 
-			String SQL1 = "delete from addrequestlist where UserId = '" + Integer.parseInt(userid) + "' ;";
-			String SQL2 = "insert into FRINDES values ('" + Integer.parseInt(userid) + "' , '"
-					+ Integer.parseInt(friendid) + "') ;"
-					+"insert into FRINDES values ('" + Integer.parseInt(friendid) + "' , '"
-					+ Integer.parseInt(userid) + "') ;";
+    }
 
-			int x = stmt1.executeUpdate(SQL1);
-			int y = stmt2.executeUpdate(SQL2);
+    /*
+     * when the user accept friend request, we must delete the user that sent friend
+     * request from (add request list) and add him to (friend list) of the user.
+     */
+    public void acceptfriendrequest(String userid , String friendid)// mona
+    {
 
-			if (x > 0) {
-				System.out.println("User successfully deleted from request list...");
-			} else {
-				System.out.println("ERROR OCCURED WHEN DELETING!!");
-			}
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement(); Statement stmt2 = con.createStatement();) {
 
-			if (y > 0) {
-				System.out.println("User successfully added to friend list...");
-			} else {
-				System.out.println("ERROR OCCURED WHEN INSERTING!!");
-			}
+            String SQL1 = "delete from addrequestlist where UserId = '" + Integer.parseInt(userid) + "' ;";
+            String SQL2 = "insert into FRINDES values ('" + Integer.parseInt(userid) + "' , '"
+                    + Integer.parseInt(friendid) + "') ;"
+                    + "insert into FRINDES values ('" + Integer.parseInt(friendid) + "' , '"
+                    + Integer.parseInt(userid) + "') ;";
 
-			con.close();
-		}
+            stmt1.executeUpdate(SQL1);
+            stmt2.executeUpdate(SQL2);
 
-		// Handle any errors that may have occurred.
-		catch (SQLException e) {
-			System.err.println(e);
-		}
-	}
-	public void updateUserState(String userid,String paypal,String credit_card) {
-		
-	}
+            con.close();
+
+            String message = "Accept Firend Requset from " + userid;
+            sendingNotification(friendid , message);
+
+            String tempMessage = "Firend Request from " + friendid;
+            clearNotification(userid , tempMessage);
+        }
+
+        // Handle any errors that may have occurred.
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    /*upgrade the normal user to premium user*/
+    public void updateUserState(String userid , String paypal , String credit_card) {
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement();) {
+
+            String SQL1 = "update Users set is_Premium_Users = '" + 1 + "' , PayPal = '" + paypal + "' , credit_card = '" + credit_card + "'"
+                    + "where UserId = '" + Integer.parseInt(userid) + "';";
+            stmt1.executeUpdate(SQL1);
+            con.close();
+        }
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    /*when user send friend requset to another user, the another user 
+    should receive notification*/
+    public void sendingNotification(String toId , String content) {
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement();) {
+
+            String SQL1 = "insert into Notifications values('" + Integer.parseInt(toId) + "' , '" + content + "');";
+            stmt1.executeUpdate(SQL1);
+            con.close();
+        }
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    /*user can see his all notifications*/
+    public ArrayList<String> getAllNotifications(String userId) {
+        ArrayList<String> notifications = new ArrayList<String>();
+
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement();) {
+
+            String SQL1 = "select content from Notifications where userid = '" + Integer.parseInt(userId) + "';";
+            ResultSet messages = stmt1.executeQuery(SQL1);
+
+            while (messages.next()) {
+                notifications.add(messages.getString("content"));
+            }
+
+            con.close();
+        }
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+
+        return notifications;
+    }
+
+    /*when user accept friend requset, we should clear friend request notification from his notifications*/
+    public void clearNotification(String userId , String content) {
+        String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
+        try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
+                Statement stmt1 = con.createStatement();) {
+
+            String SQL1 = "delete from Notifications where userid = '" + Integer.parseInt(userId) + "' and content = '" + content + "' ;";
+            stmt1.executeUpdate(SQL1);
+            con.close();
+        }
+        catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
 }
