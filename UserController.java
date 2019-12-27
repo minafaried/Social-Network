@@ -13,6 +13,12 @@ public class UserController {
 		databasehandler d=new databasehandler();
 		d.acceptfriendrequest(mainuser.getUserId(), friend.getUserId());
 	}
+	
+	public void seeAllNotifications(User user){
+            databasehandler d = new databasehandler();
+            d.getAllNotifications(user.getUserId());
+        }
+	
 	public void sendGroupRequest(User mainuser, Group group) {
 	}
 
