@@ -13,26 +13,26 @@ import java.util.ArrayList;
  */
 public class SearchAll {
     
-     Search s;   
-     public ArrayList<String> SearchAboutPage(String name){
+     private Search s; 
+     public SearchAll() {
+	}
+     public ArrayList<String> SearchAboutPage(String name,AllUsers a){
          s = new PageSearch();
-         s.search(name);
-         return  null;
+         return   s.search(name,a);
      }         
-     public ArrayList<String> SearchAboutGroup(String name){
+     public ArrayList<String> SearchAboutGroup(String name,AllUsers a){
           s = new GroupSearch();
-          s.search(name);
-         return  null;
+          
+         return s.search(name,a);
      }
-     public ArrayList<String> SearchAboutHashTag(String name){
+     public ArrayList<String> SearchAboutHashTag(String name, AllUsers a){
          s = new HashTagSearch();
-         s.search(name);
-         return  null;
+         
+         return  s.search(name,a);
      }
-     public ArrayList<String> SearchAboutFriend(String name){
+     public ArrayList<String> SearchAboutFriend(String name,AllUsers a){
          s = new FriendSearch();
-         s.search(name);
-         return  null;
+         return   s.search(name,a);
      }
     
 }

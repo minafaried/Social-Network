@@ -25,6 +25,18 @@ public class AllUsers {
 			allPremiumUser.get(i).display();
 		}
     }
+    public void Displaybyid(String id) {
+		PremiumUser p= getpremiumuserbyid(id);
+		User u=getuserbyid(id);
+		if(p!=null)
+		{
+			p.display();
+		}
+		if(u!=null)
+		{
+			u.display();
+		}
+    }
     public User getuserbyid(String userid)
     {
     	   

@@ -1,10 +1,14 @@
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 //naglaa
 public class form {
 
-	 public User Signupform()
+	 @SuppressWarnings("deprecation")
+	public User Signupform()
 	{
-             User user1 = null;
+             User user1 = new User();
              System.out.println("Enter The name of User");
              Scanner sn1 = new Scanner(System.in);
              String name = sn1.nextLine();
@@ -41,23 +45,20 @@ public class form {
                  Birthday.add(i, Integer.parseInt(a));
                  i++;
              }
-             Date date1 = null ;
-             date1.setYear(Birthday.get(0));
-             date1.setMonth(Birthday.get(1));
-             date1.setDate(Birthday.get(2));
-             user1.setBirthdate(date1);
+             Date birth = new Date(Birthday.get(0),Birthday.get(1), Birthday.get(2));
+             user1.setBirthdate(birth);
              
 		return user1;
 	}
 	public User loginform()
 	{
-             User user1 = null;
-             System.out.println("Enter The name of User");
+             User user1 = new User();
+             System.out.println("Enter your Email ");
              Scanner sn1 = new Scanner(System.in);
              String name = sn1.nextLine();
              user1.setName(name);
              
-             System.out.println("Enter The Password");
+             System.out.println("Enter your Password");
              sn1 = new Scanner(System.in);
              String password = sn1.nextLine();
              user1.setPassword(password);

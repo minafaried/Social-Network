@@ -11,12 +11,13 @@ import java.util.ArrayList;
  * @author DELL
  */
 public class Authentication {
-    public String logIn(String userName , String password,AllUsers allusers) {
+    public String logIn(String email , String password,AllUsers allusers) {
 
     	String id="";
+    	//System.out.println(email+" "+ password);
 
         for (int i = 0; i < allusers.getNUser().size(); i++) {
-            if ( allusers.getNUser().get(i).getName().equals(userName) && allusers.getNUser().get(i).getPassword().equals(password)) {
+            if ( allusers.getNUser().get(i).getEmail().equals(email) && allusers.getNUser().get(i).getPassword().equals(password)) {
                 id =allusers.getNUser().get(i).getUserId() ;
                 
                 //System.out.println("Login Successfully...");
@@ -25,7 +26,7 @@ public class Authentication {
 
         if (id.equals("")) {
             for (int i = 0; i < allusers.getPUser().size(); i++) {
-                if ( allusers.getPUser().get(i).getName().equals(userName) &&  allusers.getPUser().get(i).getPassword().equals(password)) {
+                if ( allusers.getPUser().get(i).getEmail().equals(email) &&  allusers.getPUser().get(i).getPassword().equals(password)) {
                 	 id=allusers.getPUser().get(i).getUserId() ;
                     //System.out.println("Login Successfully...");
                 }
