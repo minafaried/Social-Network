@@ -15,8 +15,14 @@ public class UserController {
 	}
 	
 	public void seeAllNotifications(User user){
+            ArrayList<String> userNotifications = new ArrayList<String>();
             databasehandler d = new databasehandler();
-            d.getAllNotifications(user.getUserId());
+            userNotifications = d.getAllNotifications(user.getUserId());
+            
+            for (int i=0 ; i<userNotifications.size() ; i++){
+                System.out.println("notification " + (i+1) + " : ");
+                System.out.println(userNotifications.get(i));
+            }
         }
 	
 	public void sendGroupRequest(User mainuser, Group group) {
