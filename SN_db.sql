@@ -25,11 +25,6 @@ CREATE TABLE [addrequestlist] (
   [friendrequestid] int REFERENCES Users(UserId),
 );
 
-create table Notifications(
-userid int REFERENCES Users(UserId),
-content varchar(50) not null 
-);
-
 insert into [Users](name,password,email,gender,country,birthdate,is_Premium_Users)
          values('ramy','123','mina@gmail.com','m','giza','1999-4-16' ,0);
 

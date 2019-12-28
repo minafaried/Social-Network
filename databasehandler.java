@@ -1,6 +1,7 @@
 import java.sql.*;
 import java.util.ArrayList;
 
+
 class Ids {
 	String id1;
 	String id2;
@@ -256,7 +257,7 @@ public class databasehandler {
      * we check if friend request Id is valid then we add userId and friend request
      * Id into table addrequestlist by this i send a request to a friend
      */
-    public void sendfriendrequest(String userid , String friendrequestid)// naglaa
+    public boolean sendfriendrequest(String userid , String friendrequestid)// naglaa
     {
         String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
         try (Connection con = DriverManager.getConnection(connectionUrl , "root" , "root");
@@ -264,14 +265,23 @@ public class databasehandler {
 
             String SQL = "insert into addrequestlist values ('" + Integer.parseInt(userid) + "' , '"
                     + Integer.parseInt(friendrequestid) + "') ;";
-            stmt1.executeUpdate(SQL);
+           int x= stmt1.executeUpdate(SQL);
             con.close();
 
             String message = "Firend Request from " + friendrequestid;
             sendingNotification(userid , message);
+            if(x==0)
+            {
+            	return false;
+            }
+            else
+            {
+            	return true;
+            }
         }
         catch (SQLException e) {
             System.err.println(e);
+            return false;
         }
 
     }
@@ -280,7 +290,7 @@ public class databasehandler {
      * when the user accept friend request, we must delete the user that sent friend
      * request from (add request list) and add him to (friend list) of the user.
      */
-    public void acceptfriendrequest(String userid , String friendid)// mona
+    public boolean acceptfriendrequest(String userid , String friendid)// mona
     {
 
         String connectionUrl = "jdbc:sqlserver://" + databaseIP + ";databaseName=SN_db;integratedsecurity=true;";
@@ -294,7 +304,7 @@ public class databasehandler {
                     + Integer.parseInt(userid) + "') ;";
 
             stmt1.executeUpdate(SQL1);
-            stmt2.executeUpdate(SQL2);
+           int x= stmt2.executeUpdate(SQL2);
 
             con.close();
 
@@ -303,11 +313,20 @@ public class databasehandler {
 
             String tempMessage = "Firend Request from " + friendid;
             clearNotification(userid , tempMessage);
+            if(x==0)
+            {
+            	return false;
+            }
+            else
+            {
+            	return true;
+            }
         }
 
         // Handle any errors that may have occurred.
         catch (SQLException e) {
             System.err.println(e);
+            return false;
         }
     }
 
@@ -325,7 +344,7 @@ public class databasehandler {
         catch (SQLException e) {
             System.err.println(e);
         }
-    }
+    } 
 
     /*when user send friend requset to another user, the another user 
     should receive notification*/

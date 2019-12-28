@@ -21,8 +21,12 @@ public class addUser implements SignUp{
         user.setBirthdate(birthdate);
        
         databasehandler db = new databasehandler();
-        user = db.adduser(user);    
+        user = db.adduser(user);
+        if(user==null)
+        {
+        	return "";
+        }
 	    String newId = user.getUserId();
-        return newId;
+        return newId; 
     }
 }

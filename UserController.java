@@ -1,18 +1,28 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class UserController {
 
 	private Leave leave;
 	private CreatePost createpost;
 	
-	public void sendFriendRequest(String mainuserid, String userid) {
+	public boolean sendFriendRequest(String mainuserid, String userid) {
+		if(mainuserid.equals(userid))
+		{
+			return false;
+		}
 		databasehandler d=new databasehandler();
-		d.sendfriendrequest(userid, mainuserid);
+		return d.sendfriendrequest(userid, mainuserid);
 	}
-	public void acceptFriend(String mainuserid, String friendid) {
+	
+	public boolean acceptFriend(String mainuserid, String friendid) {
+		if(mainuserid.equals(friendid))
+		{
+			return false;
+		}
 		databasehandler d=new databasehandler();
-		d.acceptfriendrequest(mainuserid, friendid);
+		return d.acceptfriendrequest(mainuserid, friendid);
 	}
 	
 	public void seeAllNotifications(String userid){

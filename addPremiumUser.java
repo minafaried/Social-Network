@@ -32,7 +32,7 @@ public class addPremiumUser implements SignUp {
 			paypal = input.nextLine();
 			pUser.setcredit_Card(null);
 			pUser.setPaypal(paypal);
-		}
+		} 
 		pUser.setName(userName);
 		pUser.setEmail(email);
 		pUser.setPassword(password);
@@ -42,7 +42,10 @@ public class addPremiumUser implements SignUp {
 
 		databasehandler db = new databasehandler();
 		pUser = db.addpremiumuser(pUser);
-
+	       if(pUser==null)
+	        {
+	        	return "";
+	        }
 		String newId = pUser.getUserId();
 
 		return newId;

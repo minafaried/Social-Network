@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 //naglaa
 public class form {
-
 	 @SuppressWarnings("deprecation")
 	public User Signupform()
 	{
@@ -33,9 +32,9 @@ public class form {
               sn1 = new Scanner(System.in);
              String country = sn1.nextLine();
              user1.setCountry(country);
-             
-             System.out.println("Enter The Date");
-              sn1 = new Scanner(System.in);
+              
+             System.out.println("Enter The birth date");
+             sn1 = new Scanner(System.in);
              String date = sn1.nextLine();
              String []splitted = date.split("-");
              ArrayList<Integer>Birthday = new ArrayList<Integer>();
